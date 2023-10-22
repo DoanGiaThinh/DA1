@@ -1,0 +1,14 @@
+.root{
+    --btn-background:#FFC222;
+    --body-text:#3B2F2F;
+    --second-headtext:#C82E34;
+    --head-text:#C82E34;
+}
+.wrapper{
+    max-width: 1060px;
+    width: 100%;
+    margin-inline: auto; 
+}
+.content{
+    height: 482px;
+}
