@@ -2,40 +2,6 @@
 // Kết nối đến cơ sở dữ liệu
 include "connect.php";
 
-// Kiểm tra kết nối
-if (mysqli_connect_errno()) {
-    die("Kết nối không thành công: " . mysqli_connect_error());
-}
-
-// Xử lý tìm kiếm
-if (isset($_GET['search_term'])) {
-    $searchTerm = mysqli_real_escape_string($conn, $_GET['search_term']);
-    $searchPattern = "%$searchTerm%";
-
-    // Truy vấn cơ sở dữ liệu sử dụng Prepared Statements
-    $query = "SELECT * FROM mon WHERE tenmon LIKE ?";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "s", $searchPattern);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-
-    // Kiểm tra kết quả truy vấn
-    if (mysqli_num_rows($result) > 0) {
-        // Hiển thị kết quả
-        while ($row = mysqli_fetch_assoc($result)) {
-            // Xử lý dữ liệu
-            $resultData = $row['mamon'] . $row['tenmon'];
-            // Hiển thị thông tin tìm kiếm
-            echo "<p>" . htmlspecialchars($resultData) . "</p>";
-        }
-    } else {
-        echo "Không tìm thấy kết quả.";
-    }
-
-    // Giải phóng bộ nhớ sau khi sử dụng kết quả truy vấn
-    mysqli_stmt_close($stmt);
-}
-
 // Đóng kết nối cơ sở dữ liệu
 mysqli_close($conn);
 ?>
@@ -46,29 +12,34 @@ mysqli_close($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Quản Trị</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
     <div class="header">
-        <a href="#">Về Trang Chủ</a>
-        <h2>Quản Lý Đơn Hàng</h2>
+            <a href="main/index.php"><i class="fa-solid fa-arrow-left"></i>Về Trang Chủ</a>
+            <p>Trang Quản Trị</p>
     </div>
-    <div class="container">
-
-
-       
-
-        <select id="selectOption">
-            <option value="khachhang">Khách hàng</option>
-            <option value="sanpham">Sản phẩm</option>
-        </select>
-        
-
-
-
+    <div class="main">
+        <div class="container">
+            <ul class="vertical-menu">
+                <li><a href="index.php?page=product">Sản Phẩm</a></li>
+                <li><a href="index.php?page=customer">Khách Hàng</a></li>
+                <li><a href="index.php?page=order">Đơn Hàng</a></li>
+                <li><a href="index.php?page=order_details">Chi Tiết Đơn</a></li>
+            </ul>
+        </div>
+        <?php 
+        if(isset($_GET["page"]))
+        {
+            $page = $_GET["page"];
+            $page = $page.".php";
+            require($page);
+        }
+        ?>
     </div>
+  
 </body>
 
 </html>

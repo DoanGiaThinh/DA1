@@ -11,5 +11,5 @@
     $deleteQuery = "DELETE FROM mon WHERE mamon='$this_id'";
     mysqli_query($conn, $deleteQuery);
 
-    header('location: product.php');
+    header('location: index.php?page=product');
 ?>

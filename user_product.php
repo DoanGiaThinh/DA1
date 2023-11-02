@@ -20,7 +20,7 @@ include "../connect.php";
             echo '<a href="../btn_order/product_detail.php?id=' . $tenmon . '"><li class="product content2-product">';
             echo '<img width="185" height="185" src="../img/SanPham/' . $row['anh'] . '">';
             echo '<p class="product_name">' . $tenmon . '</p>';
-            echo '<span class="content2-cost__title product_price">' . $gia .' <sub>đ</sub></span>';
+            echo '<span class="content2-cost__title product_price">' . number_format($gia) .' <sub>đ</sub></span>';
             echo '</li></a>';
         }
     }

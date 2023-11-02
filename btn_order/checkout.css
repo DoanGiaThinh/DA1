@@ -1,0 +1,154 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+form{
+    padding: 30px;
+    
+}
+
+img{
+    width: 100px;
+    height: 100px;  
+}
+
+.order{
+    width: 36%;
+}
+
+.customer{
+    width: 36%;
+}
+
+
+.transport{
+    width: 24%;
+}
+
+.main{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* -------------------------------------------------------- */
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.information {
+    margin-bottom: 20px;
+}
+
+.information h3 {
+    margin-bottom: 30px;
+}
+
+/* .name, */
+.emailphone {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="phone"],
+select {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.Address {
+    margin-bottom: 20px;
+}
+
+.addressphone,
+.Nation {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form-label {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+/*============================================================*/
+
+    .transport {
+        border-right: 2px solid #333;
+        border-left: 2px solid #333;
+        padding: 0 30px;
+    }
+
+    .transport p {
+        margin-bottom: 10px;
+    }
+
+    .transport h2 {
+        margin-bottom: 10px;
+    }
+
+    .transport input[type="radio"] {
+        margin-right: 5px;
+    }
+
+    .transport label {
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+
+    table{
+        width: 550px;
+    }
+    tr{
+        /* margin-top: 10px; */
+    }
+    td{
+        height: 130px;
+        display: table-cell;
+        vertical-align: inherit;
+        text-align: center;
+    }
+
+    .order > p{
+        float: right;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .btn_checkout{
+        float: right;
+        height: 50px;
+        width: 100px;
+        background-color: #04AA6D;
+        color: white;
+        border: 1px solid #04AA6D;
+    }
+    .btn_checkout:hover{
+        background-color: white;
+        color: #04AA6D;
+        border: 1px solid #333;
+    }

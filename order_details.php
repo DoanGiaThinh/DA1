@@ -1,40 +1,75 @@
 <?php
-include "connect.php";
-
-// Lấy dữ liệu từ bảng MON
-$select_mon_query = "SELECT mamon, soluong FROM MON";
-$result_mon = $conn->query($select_mon_query);
-
-// Lấy dữ liệu từ bảng DONHANG
-$select_donhang_query = "SELECT madonhang FROM DONHANG";
-$result_donhang = $conn->query($select_donhang_query);
-
-if ($result_mon->num_rows > 0 && $result_donhang->num_rows > 0) {
-    // Lặp qua từng dòng dữ liệu trong bảng MON
-    while ($row_mon = $result_mon->fetch_assoc()) {
-        $mamon = $row_mon['mamon'];
-        $soluong = $row_mon['soluong'];
-
-        // Lặp qua từng dòng dữ liệu trong bảng DONHANG
-        while ($row_donhang = $result_donhang->fetch_assoc()) {
-            $madonhang = $row_donhang['madonhang'];
-
-            // Thực hiện INSERT vào bảng CHITIETDONHANG
-            $insert_query = "INSERT INTO CHITIETDONHANG (madonhang, mamon, soluong) VALUES ('$madonhang', '$mamon', $soluong)";
-            if ($conn->query($insert_query) === TRUE) {
-                echo "Thêm dữ liệu vào bảng CHITIETDONHANG thành công!";
-            } else {
-                echo "Lỗi khi thêm dữ liệu vào bảng CHITIETDONHANG: " . $conn->error;
-            }
-        }
-
-        // Đặt con trỏ về đầu kết quả của bảng DONHANG
-        $result_donhang->data_seek(0);
-    }
-} else {
-    echo "Không có dữ liệu trong bảng MON hoặc DONHANG";
-}
-
-// Đóng kết nối
-$conn->close();
+    include("connect.php");
 ?>
+<?php
+    include("connect.php");
+?>
+<div class="order_details">
+    <div class="title_order_details">Thông Tin Chi Tiết Đơn Hàng</div>
+    <?php
+        // Câu truy vấn SQL
+        $sql = "SELECT * FROM chitietdonhang";
+        $result = $conn->query($sql);
+
+        echo "<table class='my-table'>";
+        echo "<tr> 
+                <th class='my-header'>Mã Đơn Hàng</th>
+                <th class='my-header'>Mã Món</th>
+                <th class='my-header'>Số Lượng</th>
+            </tr>";
+
+        if ($result->num_rows > 0) {
+            // Duyệt qua từng hàng kết quả
+            while ($row = $result->fetch_assoc()) {
+                $madonhang = $row['madonhang'];
+                $mamon = $row['mamon'];
+                $soluong = $row['soluong'];
+
+                // Xử lý dữ liệu ở đây
+                echo "<tr>";
+                    echo "<td>$madonhang</td>";
+                    echo "<td>$mamon</td>";
+                    echo "<td>$soluong</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "Không có kết quả.";
+        }
+        echo "</table>";
+
+        $conn->close();
+    ?>
+</div>
+<style>
+    .order_details{
+        display: flex;
+        flex-direction: column;
+        flex: 12;
+    }
+    .title_order_details{
+        height: 50px;
+        font-size: 30px;
+        color: white;
+        background-color: black;
+    }
+    table.my-table {
+        border-collapse: collapse;
+    }
+
+    th.my-header {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+        background-color: #f2f2f2;
+    }
+
+    td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+</style>

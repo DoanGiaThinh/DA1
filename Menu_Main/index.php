@@ -12,7 +12,7 @@
         <div class="wrapper__Fixed">
             <div id="header">
                 <a class="logo" href="">
-                    <img src="./img/logo.png" alt="logo">
+                    <img src="../img/logo.png" alt="logo">
                 </a>
                <!-- Menu -->
                 <div id="menu">
@@ -23,7 +23,7 @@
                         <a href="../product/index_user.php"> Sản phẩm</a>
                     </div>
                     <div class="item">
-                        <a href="#"> Giới Thiệu</a>
+                        <a href="https://www.facebook.com/photo/?fbid=2403394799961100&set=pob.100008718106312"> Giới Thiệu</a>
                     </div>
                     <div class="item">
                         <a href="#Footer"> Hỗ trợ</a>
@@ -57,7 +57,7 @@
                 <p>Nhà hàng của chúng tôi tập trung vào thực phẩm sạch sẽ,
                     an toàn từ nguyên liệu tươi ngon.
                     Món ăn hấp dẫn, ngon quá xá.</p>
-                <button>Order Now</button>
+                <button><a class="order_now" href="../product/index_user.php">Order Now</a></button>
             </div>
             <div class="box-right">
                 <img src="../imgWeb/img_1.png" alt="">

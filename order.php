@@ -1,51 +1,70 @@
 <?php
-include "connect.php";
+    include("connect.php");
+?>
 
-// Kiểm tra kết nối cơ sở dữ liệu
-if ($conn) {
-    // Tạo câu truy vấn để tìm mã đơn hàng mới
-    $query = "SELECT IFNULL(MAX(CAST(SUBSTRING(madonhang, 3) AS SIGNED)), 0) + 1 AS next_id FROM DONHANG";
+<?php
+    // Câu truy vấn SQL
+    $sql = "SELECT * FROM donhang";
+    $result = $conn->query($sql);
 
-    // Thực hiện câu truy vấn
-    $result = $conn->query($query);
+    echo "<table class='my-table'>";
+    echo "<tr> 
+            <th class='my-header'>Mã Đơn Hàng</th>
+            <th class='my-header'>Mã Khách Hàng</th>
+            <th class='my-header'>Ngày Đặt Hàng</th>
+            <th class='my-header'>Tổng Giá</th>
+            <th class='my-header'>Phương Thức Thanh Toán</th>
+            <th class='my-header'>Trạng Thái</th>
+        </tr>";
 
-    if ($result) {
-        $row = $result->fetch_assoc();
-        $next_id = $row['next_id'];
+    if ($result->num_rows > 0) {
+        // Duyệt qua từng hàng kết quả
+        while ($row = $result->fetch_assoc()) {
+            $madonhang = $row['madonhang'];
+            $makhachhang = $row['makhachhang'];
+            $ngaydathang = $row['ngaydathang'];
+            $tonggia = $row['tonggia'];
+            $pttt = $row['phuongthucthanhtoan'];
+            $trangthai = $row['trangthai'];
 
-        // Chèn thông tin đơn hàng mới vào bảng DONHANG
-        $ngaydathang = date("Y-m-d"); // Lấy ngày hiện tại
-        $tonggia = 0.0; // Thay thế bằng tổng giá đơn hàng thực tế
-
-        $new_madonhang = "DH" . str_pad($next_id, 4, "0", STR_PAD_LEFT); // Tạo mã đơn hàng mới
-
-        // Lấy thông tin makhachhang từ bảng khachhang
-        $select_makhachhang_query = "SELECT makhachhang FROM khachhang";
-        $result_makhachhang = $conn->query($select_makhachhang_query);
-        if ($result_makhachhang->num_rows > 0) {
-            $row_makhachhang = $result_makhachhang->fetch_assoc();
-            $makhachhang = $row_makhachhang['makhachhang'];
-
-            $insert_query = "INSERT INTO DONHANG (madonhang, makhachhang, ngaydathang, tonggia) VALUES ('$new_madonhang', '$makhachhang', '$ngaydathang', $tonggia)";
-
-            if ($conn->query($insert_query) === TRUE) {
-                echo "Đã thêm đơn hàng mới thành công. Mã đơn hàng mới là: $new_madonhang";
-            } else {
-                echo "Lỗi khi thêm đơn hàng mới: " . $conn->error;
-            }
-        } else {
-            echo "Không có dữ liệu khách hàng.";
+            // Xử lý dữ liệu ở đây
+            echo "<tr>";
+                echo "<td>$madonhang</td>";
+                echo "<td>$makhachhang</td>";
+                echo "<td>$ngaydathang</td>";
+                echo "<td>".number_format($tonggia)."</td>";
+                echo "<td>$pttt</td>";
+                echo "<td>$trangthai</td>";
+            echo "</tr>";
         }
-
-        // Giải phóng bộ nhớ sau khi sử dụng kết quả truy vấn
-        $result_makhachhang->free();
     } else {
-        echo "Lỗi khi tìm mã đơn hàng mới: " . $conn->error;
+        echo "Không có kết quả.";
+    }
+    echo "</table>";
+
+    $conn->close();
+?>
+
+<style>
+    table.my-table {
+        flex: 12;
+        border-collapse: collapse;
     }
 
-    // Đóng kết nối
-    $conn->close();
-} else {
-    echo "Lỗi kết nối cơ sở dữ liệu.";
-}
-?>
+    th.my-header {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+        background-color: #f2f2f2;
+    }
+
+    td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+</style>

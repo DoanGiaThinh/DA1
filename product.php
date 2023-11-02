@@ -19,11 +19,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="product-name">Tên món</label><br>
-                                <input type="text" class="form-control" name="product-name" id="product-name" required><br>
+                                <input type="text" class="form-control" name="product-name" id="product-name" placeholder="Tên Món" required><br>
                             </div>
                             <div class="form-group">
                                 <label for="price">Giá</label><br>
-                                <input type="text" class="form-control" name="price" id="price" values="" required><br>
+                                <input type="text" class="form-control" name="price" id="price" values="" placeholder="Giá" required><br>
                             </div>
                             <div class="form-group">
                                 <label for="quantity">Số lượng</label><br>
@@ -103,15 +103,6 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<div class="header-table">
-    <div class="button">
-        <a class="btn btn-warning" href="javascript:history.back()">Quay lại</a>
-        
-    </div>
-    <div class="button">
-        <a class="btn btn-warning" href="http://127.0.0.1:5502/menu.html">Quay về Trang Chủ</a>
-    </div>
-</div>
 <script>
         // Open the popup form
         document.getElementById("open-form").addEventListener("click", function() {
@@ -166,7 +157,9 @@ body{
         cursor: pointer;
     }
 /**? */    
-
+.main-table{
+    flex: 12;
+}
 .button{
     margin:10px auto;
     display:flex;

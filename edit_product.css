@@ -1,0 +1,40 @@
+form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .avatar {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+  }
+  
+  input[type="file"] {
+    margin-bottom: 10px;
+  }
+  
+  p {
+    margin-top: 10px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }

@@ -27,7 +27,7 @@ if (!empty($search)) {
             $searchResults .= '<li class="product content2-product">';
             $searchResults .= '<img width="185" height="185" src="../img/SanPham/' . $row['anh'] . '">';
             $searchResults .= '<p class="product_name">' . $tenmon . '</p>';
-            $searchResults .= '<span class="content2-cost__title product_price">' . $gia . ' <sub> đ </sub>' . '</span>';
+            $searchResults .= '<span class="content2-cost__title product_price">' . number_format($gia) . ' <sub> đ </sub>' . '</span>';
             $searchResults .= '</li>';
         }
 
