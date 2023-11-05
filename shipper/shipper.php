@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
+<link rel="stylesheet" href="shipper.css">
 <h1>Quản lý đơn hàng</h1>
 <table>
     <tr>
@@ -68,60 +68,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     ?>
 </table>
-
-
-<style>
-    table {
-        width: 90%;
-        margin: 0 auto;
-        border-collapse: collapse;
-    }
-
-    th,
-    td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-
-    th {
-        background-color: #f2f2f2;
-    }
-
-    tr:hover {
-        background-color: #f5f5f5;
-    }
-
-    .empty-row {
-        text-align: center;
-        font-style: italic;
-        color: gray;
-    }
-
-    form {
-        display: inline-block;
-        margin-right: 5px;
-    }
-
-    select {
-        padding: 5px;
-        border: 1px solid #ddd;
-        border-radius: 3px;
-    }
-
-    button {
-        padding: 5px 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #45a049;
-    }
-    .table_price{
-        width: 150px;
-    }
-</style>

@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
         // Hiển thị chi tiết sản phẩm
         
         echo '<div class="title_product_detail">
-        <div><a id="tieptucmua" href="../product/index_user.php"><i class="fa-solid fa-left-long"></i>Tiếp Tục Mua</a></div>
+        <div><a id="tieptucmua" href="../customer/index_user.php"><i class="fa-solid fa-left-long"></i>Tiếp Tục Mua</a></div>
         <span class="mid_title">Chi tiết sản phẩm</span>';
         echo '<a href="cart.php" class="see_cart"><i class="fa-solid fa-cart-shopping"></i></a>';
         echo '</div>';

@@ -1,6 +1,6 @@
 <?php
-    include "connect.php";
-    
+    include("../connect.php");
+
     if(isset($_GET['this_id'])){
         $this_id= $_GET['this_id'];
         

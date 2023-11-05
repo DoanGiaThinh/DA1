@@ -1,9 +1,4 @@
-<?php
-    include("connect.php");
-?>
-<?php
-    include("connect.php");
-?>
+
 <div class="contain details_css">
     <?php
         // Câu truy vấn SQL

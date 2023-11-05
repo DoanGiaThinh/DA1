@@ -6,7 +6,7 @@ include "../connect.php";
 <link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="reset.css">
 <link rel="stylesheet" href="index_user.css">
-<link rel="stylesheet" href="../user_product.css">
+<link rel="stylesheet" href="user_product.css">
 
 <div class="main">
     <!-- header -->
@@ -32,7 +32,7 @@ include "../connect.php";
     <div class="container">
         <div class="content1">
             <div class="input-content1">
-                <form class="form-search" method="post" action="../product/index_user.php">
+                <form class="form-search" method="post" action="index_user.php">
                     <div class="search">
                         <input type="text" name="search" placeholder="Tìm kiếm sản phẩm">
                     </div>
@@ -79,7 +79,7 @@ include "../connect.php";
                 </p>
                 <div class="button-back">
 
-                   <a href="../Menu_Main/index.php"> <button class="btn bottom-btn"> Về Trang Chủ
+                   <a href="index_user.php"> <button class="btn bottom-btn"> Về Trang Chủ
                     </button></a>
                 </div>
             </div>
@@ -87,7 +87,7 @@ include "../connect.php";
         </div>
         <div class="content2">
             <?php require("../timkiem/search_product_user.php"); ?>
-            <?php require("../user_product.php"); ?>
+            <?php require("user_product.php"); ?>
 
         </div>
 

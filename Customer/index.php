@@ -20,7 +20,7 @@
                         <a href="index.php"> Trang chủ</a>
                     </div>
                     <div class="item">
-                        <a href="../product/index_user.php"> Sản phẩm</a>
+                        <a href="index_user.php"> Sản phẩm</a>
                     </div>
                     <div class="item">
                         <a href="https://www.facebook.com/photo/?fbid=2403394799961100&set=pob.100008718106312"> Giới Thiệu</a>

@@ -47,7 +47,6 @@
         </thead>
 
     <?php 
-        include "connect.php";
 
         if(isset($_POST['btn'])){
             $image = $_FILES['anh']['name'];
@@ -63,7 +62,7 @@
     
             mysqLi_query($conn, $sql);
     
-            move_uploaded_file($image_tmp_name, 'img/SanPham/'.$image);
+            move_uploaded_file($image_tmp_name, '../img/SanPham/'.$image);
             header("Location: index.php?page=product");
             // Chuyển hướng để tránh việc lặp lại dữ liệu khi làm mới trang
             exit();
@@ -83,7 +82,7 @@
                 <td><?php echo $row ['tenmon']?></td>
                 <td><?php echo number_format($row['gia']) ." đ"?></td>
                 <td class="table_img" style="text-align: center">
-                    <img width="100" height="100" src="img/SanPham/<?php echo $row['anh']?>">
+                    <img width="100" height="100" src="../img/SanPham/<?php echo $row['anh']?>">
                 </td>
                 <td><?php echo $row ['soluong']?></td>
                 <td>

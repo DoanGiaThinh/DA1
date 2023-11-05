@@ -1,7 +1,5 @@
 
 <?php
-include "connect.php";
-
 
 if (isset($_POST['search'])) {
     $search = $_POST['search'];
@@ -13,8 +11,8 @@ if (isset($_POST['search'])) {
     $search = ""; // Nếu không có giá trị tìm kiếm thì mặc định là rỗng
 }
 
-if (isset($search)) {
-    $sql = "SELECT * FROM donhang WHERE madonhang LIKE '%$search%' OR ngaydathang LIKE '%$search%' OR trangthai LIKE '%$search%'";
+if (!empty($search)) {
+    $sql = "SELECT * FROM khachhang WHERE tenkhachhang LIKE '%$search%' OR email LIKE '%$search%'";
     $result = $conn->query($sql);
 
     $searchResults = '';
@@ -23,22 +21,24 @@ if (isset($search)) {
         $i=1;
         while ($row = mysqli_fetch_assoc($result)) {
             
-            $orderId = $row["madonhang"];
             $customerId = $row["makhachhang"];
-            $ngaydathang = $row["ngaydathang"];
-            $totalPrice = $row["tonggia"];
-            $pttt = $row["phuongthucthanhtoan"];
-            $trangthai = $row["trangthai"];
+            $name = $row["tenkhachhang"];
+            $email = $row["email"];
+            $address = $row["diachi"];
+            $phone = $row["sodienthoai"];
             
         
             $searchResults .= '<tr>';
             $searchResults .= '<td>'. $i .'</td>';
-            $searchResults .= '<td>' . $orderId . '</td>';
             $searchResults .= '<td>' . $customerId . '</td>';
-            $searchResults .= '<td>' . $ngaydathang . '</td>';
-            $searchResults .= '<td>' . $totalPrice . '</td>';
-            $searchResults .= '<td>' . $pttt . '</td>';
-            $searchResults .= '<td>' . $trangthai. '</td>';
+            $searchResults .= '<td>' . $name . '</td>';
+            $searchResults .= '<td>' . $address . '</td>';
+            $searchResults .= '<td>' . $email . '</td>';
+            $searchResults .= '<td>' . $phone . '</td>';
+            $searchResults .= '<td>
+                                    <span><a class="btn btn-dark" href="edit_customer.php?this_id=' . $customerId . '"><i class="fa-solid fa-pen-to-square"></i></a></span>
+                                    <span><a class="btn btn-dark" href="delete_customer.php?this_id=' . $customerId . '"><i class="fa-solid fa-trash-can"></i></a></span>
+                              </td>';
             $searchResults .= '</tr>';
         $i++;
         }
@@ -55,7 +55,7 @@ if (isset($search)) {
 }
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<!-- Form tìm kiếm khách hàng -->
 
 
 <style>

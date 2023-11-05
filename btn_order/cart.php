@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="cart.css">
 
 <body>
-    <a id="tieptucmuasam" href="../product/index_user.php"><i class="fa-solid fa-left-long"></i>Tiếp tục mua sắm</a>
+    <a id="tieptucmuasam" href="../customer/index_user.php"><i class="fa-solid fa-left-long"></i>Tiếp tục mua sắm</a>
     <div class="title">Giỏ hàng của bạn</div>
 
     <?php

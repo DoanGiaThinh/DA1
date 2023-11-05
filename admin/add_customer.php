@@ -1,5 +1,5 @@
 <?php
-include "connect.php";
+
 if (isset($_POST['btn'])) {
     $name = $_POST['firstname'] . ' ' . $_POST['lastname'];
     $email = $_POST['Email'];

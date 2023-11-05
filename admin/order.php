@@ -1,6 +1,4 @@
-<?php
-    include("connect.php");
-?>
+
 <div class="contain">
     <div class="header-table">
         <form class="search-form" method="post" action="http://localhost/DA1/index.php?page=order">
@@ -24,7 +22,7 @@
                 <th class='my-header'>Trạng Thái</th>
             </tr>";
         
-        require("search_order.php");
+        require("../timkiem/search_order.php");
 
         if ($result->num_rows > 0) {
             // Duyệt qua từng hàng kết quả

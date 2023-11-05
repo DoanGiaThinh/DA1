@@ -1,5 +1,5 @@
 <?php
-include "connect.php";
+
 
 $sql = "SELECT * FROM khachhang";
 $result = mysqli_query($conn, $sql);
@@ -24,7 +24,7 @@ $result = mysqli_query($conn, $sql);
                 <th class='my-table'>Chức Năng</th>
             </thead>
 
-            <?php require("search_customer.php"); ?>       
+            <?php require("../timkiem/search_customer.php"); ?>       
 
             <?php 
             $i =1;
@@ -38,7 +38,6 @@ $result = mysqli_query($conn, $sql);
                         <td><?php echo $row['email'] ?></td>
                         <td><?php echo $row['sodienthoai'] ?></td>
                         <td>
-                            <span><a href="edit_customer.php?this_id=<?php echo $row['makhachhang'] ?>"><i class="fa-solid fa-pen-to-square table_icon"></i></a></span>
                             <span><a href="delete_customer.php?erro=Khách hàng đang có đơn không thể xoá&this_id=<?php echo $row['makhachhang'] ?>"> <i class="fa-solid fa-trash-can table_icon"></i> </a></span>
                         </td>
                     </tr>

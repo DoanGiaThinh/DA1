@@ -1,6 +1,7 @@
 <title>Xác nhận đơn hàng</title>
+<link rel="stylesheet" href="../fontawesome/fontawesome6.4.2/css/all.css">
 <link rel="stylesheet" href="process_order.css">
-
+<a id="tieptucmuasam" href="../customer/index_user.php"><i class="fa-solid fa-left-long"></i>Tiếp tục mua sắm</a>
 <?php
 session_start();
 include("../connect.php");

@@ -50,4 +50,10 @@ color: #5fbc64;
 background-color: #fff;
 border: 1px solid #ccc;
 }
-
+#tieptucmuasam{
+  text-decoration: none;
+  font-size: 20px;
+  display: flex;
+  text-align: center;
+  color: #ee4d2d;
+}

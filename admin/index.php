@@ -1,9 +1,7 @@
 <?php
 // Kết nối đến cơ sở dữ liệu
-include "connect.php";
+include "../connect.php";
 
-// Đóng kết nối cơ sở dữ liệu
-mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +11,7 @@ mysqli_close($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Quản Trị</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -23,7 +21,7 @@ mysqli_close($conn);
     <div class="main">
         <div class="container">
             <ul class="vertical-menu">
-                <li><a href="main/index.php">Về Trang Chủ</a></li>
+                <li><a href="menu_admin.php">Về Trang Chủ</a></li>
                 <li><a href="index.php?page=product">Món</a></li>
                 <li><a href="index.php?page=customer">Khách Hàng</a></li>
                 <li><a href="index.php?page=order">Đơn Hàng</a></li>

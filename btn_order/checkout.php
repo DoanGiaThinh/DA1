@@ -9,7 +9,7 @@ session_start();
     <div class="main">
         <div class="customer">
             <?php
-            require("../add_customer.php");
+            require("../admin/add_customer.php");
             ?>
         </div>
 
