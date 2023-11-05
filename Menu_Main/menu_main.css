@@ -32,6 +32,7 @@
     text-align: center;
     position: fixed;
     background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
 }
 
 #menu{
@@ -45,7 +46,7 @@
 #menu a{
     text-decoration: none;
     color: #000000;
-    font-size: 35px;
+    font-size: 32px;
     transition: 0.5s;
     opacity: .8;
 }
@@ -53,36 +54,16 @@
     opacity: 1;
 }
 #menu .item{
-    margin: 0 25px;
+    padding: 0 30px;
+    border-right: 1px solid #ccc
+}
 
+#menu .item:last-child{
+    border-right: none
 }
 .logo img{
-    position: block;
-   
+    margin-top: 10px
 }
-
-#action{
-    display: flex;
-    margin: auto;
-    padding-left: 50px;
-}
-
-#action .item{
-    margin-left: 22px;
-    margin-right: 30px;
-
-}
-#action .item i{
-    cursor: pointer;
-    scale: 190%;
-    transition: 0.5s;
-}
-#action .item i:hover{
-    
-  
-    scale: 120%;
-}
-
 
 /* end header */ 
 /* banner */
@@ -471,6 +452,8 @@ line-height: normal;
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: -100px;
+    position: relative;
+    bottom: 0;
 }
 #Footer-logo{
     margin: 0 550px;

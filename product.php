@@ -1,14 +1,11 @@
-<div class="main-table">
+<div class="contain">
     <div class="header-table">
-        <div class="bayby-header-table">
-            Thông tin Sản Phẩm
-        </div>
         <div class="btn-add-product">
-            <button id="open-form" class="btn btn-warning">Tạo sản phẩm mới</button>
+            <button id="open-form">Tạo sản phẩm mới</button>
             <div id="popup-form" class="popup">
                 <div class="popup-content">
                     <span class="close">&times;</span>
-                    <form action="product.php" method="post" enctype="multipart/form-data">
+                    <form action=" index.php?page=product" method="post" enctype="multipart/form-data">
                         <div class="product">
                             <div class="title">
                                 <h4>Tạo sản phẩm mới</h4>
@@ -30,21 +27,22 @@
                                 <input type="number" class="form-control" name="quantity" placeholder="Số lượng" pattern="[0-9]+" required min="1" value="0"><br>
                             </div>
                         </div>
-                        <input class="add-product btn btn-warning" type="submit" name = "btn" value="Thêm Sản Phẩm Mới">
+                        <input class="add-product" type="submit" name = "btn" value="Thêm Sản Phẩm Mới">
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <table class="table">
+    <table class='my-table'>
         <thead>
             <tr>
-                <th scope="col">Mã món</th>
-                <th scope="col">Tên món</th>
-                <th scope="col">Giá</th>
-                <th scope="col">Ảnh</th>
-                <th scope="col">Số Lượng</th>
-                <th scope="col">Chức Năng</th>
+                <th class='my-table stt'>STT</th>
+                <th class='my-table'>Mã món</th>
+                <th class='my-table'>Tên món</th>
+                <th class='my-table'>Giá</th>
+                <th class='my-table'>Ảnh</th>
+                <th class='my-table'>Số Lượng</th>
+                <th class='my-table'>Chức Năng</th>
             </tr>
         </thead>
 
@@ -66,43 +64,49 @@
             mysqLi_query($conn, $sql);
     
             move_uploaded_file($image_tmp_name, 'img/SanPham/'.$image);
-            header("Location: product.php");
+            header("Location: index.php?page=product");
             // Chuyển hướng để tránh việc lặp lại dữ liệu khi làm mới trang
             exit();
         }
         
         $sql = "select * from mon";
         $result=mysqLi_query($conn,$sql);
-        
+        $i =1;
         while($row = mysqli_fetch_array($result)){      
+             
     ?>  
-
+       
         <tbody>
             <tr>
-                <th scope ="row"><?php echo $row ['mamon']?></th>
+                <td><?php echo $i?></td>
+                <td><?php echo $row ['mamon']?></td>
                 <td><?php echo $row ['tenmon']?></td>
-                <td><?php echo $row ['gia']?></td>
-                <td style="text-align: center">
+                <td><?php echo number_format($row['gia']) ." đ"?></td>
+                <td class="table_img" style="text-align: center">
                     <img width="100" height="100" src="img/SanPham/<?php echo $row['anh']?>">
                 </td>
                 <td><?php echo $row ['soluong']?></td>
                 <td>
-                    <span><a class="btn btn-dark" href="edit_product.php?this_id=<?php echo $row ['mamon']?>"><i class="fa-solid fa-pen-to-square"></i></a></span>
-
-                    <span><a class="btn btn-dark" href="delete_product.php?this_id=<?php echo $row ['mamon']?>"><i class="fa-solid fa-trash-can"></i> </a></span>                   
+                    <span><a href="edit_product.php?this_id=<?php echo $row ['mamon']?>"><i class="fa-solid fa-pen-to-square table_icon"></i></a></span>
+                    <span><a href="delete_product.php?this_id=<?php echo $row ['mamon']?>"><i class="fa-solid fa-trash-can table_icon"></i> </a></span>                   
                 </td>
             </tr>  
-        </tbody>  
-    <?php }
-    $conn->close();
+        </tbody> 
+       
+        
+    <?php 
+    $i++; 
+    }
+    // $conn->close();
+    
     ?>
+    
     </table>
     
 </div>
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script>
         // Open the popup form
         document.getElementById("open-form").addEventListener("click", function() {
@@ -124,76 +128,5 @@
         }
         
     </script>
-<style>
-body{
-    position: relative;
-}
-.popup {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    .popup-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 500px;
-    }
-
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-/**? */    
-.main-table{
-    flex: 12;
-}
-.button{
-    margin:10px auto;
-    display:flex;
-    justify-content: center;
-}
-.table{
-    width: 100%;
-    text-align: center;
-    margin: 0 auto;
-    border:1px solid black;
-}
-.table td{
-    margin: 0 auto;
-}
-.header-table{
-    font-weight: bold;
-    background-color:black;
-    color:white;
-    margin: 0 auto;
-    width: 100%;
-    border: 1px black solid;
-    display: flex;
-    justify-content: space-between;
-}
-.main-table{
-    margin: 0 auto;
-}
-.btn-add-product{
-    padding: 10px;
-}
-.bayby-header-table{
-    padding: 16px;
-}
-</style>
-
 
 

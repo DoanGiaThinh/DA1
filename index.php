@@ -18,28 +18,27 @@ mysqli_close($conn);
 
 <body>
     <div class="header">
-            <a href="main/index.php"><i class="fa-solid fa-arrow-left"></i>Về Trang Chủ</a>
-            <p>Trang Quản Trị</p>
+        <p>Trang Quản Trị</p>
     </div>
     <div class="main">
         <div class="container">
             <ul class="vertical-menu">
-                <li><a href="index.php?page=product">Sản Phẩm</a></li>
+                <li><a href="main/index.php">Về Trang Chủ</a></li>
+                <li><a href="index.php?page=product">Món</a></li>
                 <li><a href="index.php?page=customer">Khách Hàng</a></li>
                 <li><a href="index.php?page=order">Đơn Hàng</a></li>
                 <li><a href="index.php?page=order_details">Chi Tiết Đơn</a></li>
             </ul>
         </div>
-        <?php 
-        if(isset($_GET["page"]))
-        {
+        <?php
+        if (isset($_GET["page"])) {
             $page = $_GET["page"];
-            $page = $page.".php";
+            $page = $page . ".php";
             require($page);
         }
         ?>
     </div>
-  
+
 </body>
 
 </html>

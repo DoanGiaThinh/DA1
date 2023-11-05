@@ -1,9 +1,11 @@
+<link rel="stylesheet" href="edit_customer.css">
+
 <?php
 include "connect.php";
 
 $this_id = $_GET['this_id'];
 
-$sql = "SELECT * FROM khachhang WHERE makhachhang = '".$this_id."'";
+$sql = "SELECT * FROM khachhang WHERE makhachhang = '" . $this_id . "'";
 $query = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($query);
 
@@ -13,10 +15,10 @@ if (isset($_POST['btn'])) {
     $email = $_POST['email'];
     $sdt = $_POST['sodienthoai'];
 
-    $sql = "UPDATE khachhang SET tenkhachhang='$tenkhachhang', diachi='$diachi', email='$email', sodienthoai='$sdt' WHERE makhachhang = '".$this_id."'";
+    $sql = "UPDATE khachhang SET tenkhachhang='$tenkhachhang', diachi='$diachi', email='$email', sodienthoai='$sdt' WHERE makhachhang = '" . $this_id . "'";
     mysqli_query($conn, $sql);
 
-    header('location: customer.php');
+    header('location: http://localhost/DA1/index.php?page=customer');
     exit();
 }
 ?>
@@ -36,5 +38,8 @@ if (isset($_POST['btn'])) {
     <p>Số điện thoại</p>
     <input type="text" name="sodienthoai" value="<?php echo $row['sodienthoai']; ?>">
     <br><br>
-    <button type="submit" name="btn">Sửa</button>
+    <div class="flex">
+        <button type="submit" name="btn">Sửa</button>
+    </div>
+
 </form>

@@ -1,5 +1,5 @@
 
-<title>cuộc sống gian khổ</title>
+<title>Trang Người Dùng</title>
 <link rel="stylesheet" href="../Menu_Main/reset_main.css">
 <link rel="stylesheet" href="../Menu_Main/base_main.css">
 <link rel="stylesheet" href="../Menu_Main/menu_main.css">
@@ -17,7 +17,7 @@
                <!-- Menu -->
                 <div id="menu">
                     <div class="item">
-                        <a href="#"> Trang chủ</a>
+                        <a href="index.php"> Trang chủ</a>
                     </div>
                     <div class="item">
                         <a href="../product/index_user.php"> Sản phẩm</a>
@@ -29,28 +29,13 @@
                         <a href="#Footer"> Hỗ trợ</a>
                     </div>
                 </div>  
-                <div id="action">
-                    <div class="item">
-                        <i class="item__icon fa-solid fa-cart-shopping"></i>
-                    </div>
-                    <div class="item">
-                        <i class="item__icon fa-solid fa-user"></i>
-                    </div>
-                </div>
             </div>
-        <!-- end header -->
-        <!-- banner -->
-        <!-- <div class="banner">
-            <img src="/asset/css/img/Banner.png" alt="">
-           
-            </div>
-            
-        </div> -->
+
         <div id="banner">
             <div class="box-left">
                 <h2>
                 <span>Giảm đến </span>
-                <span id="discount">99%</span>
+                <span id="discount">49%</span>
                 <br>
                 <span>  </span>
                 </h2>

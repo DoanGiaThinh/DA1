@@ -18,7 +18,7 @@
             //sql delete
             $sql_delete = "DELETE FROM khachhang WHERE makhachhang='$this_id'";
             $result_delete = mysqli_query($conn,$sql_delete);
-            header("Location:customer.php");
+            header("Location: index.php?page=customer");
         }
         
     

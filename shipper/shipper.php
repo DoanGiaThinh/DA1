@@ -1,5 +1,5 @@
 
-
+<title>Trang Shipper</title>
 <?php
 include("../connect.php");
 
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<td>" . $row["tenkhachhang"] . "</td>";
             echo "<td>" . $row["sodienthoai"] . "</td>";
             echo "<td>" . $row["diachi"] . "</td>";
-            echo "<td>" . $row["tonggia"] . "</td>";
+            echo "<td class='table_price'>" . number_format($row["tonggia"]) ." đ". "</td>";
             echo "<td>" . $row["phuongthucthanhtoan"] . "</td>";
             echo "<td>" . $row["trangthai"] . "</td>";
             echo "<td>
@@ -120,5 +120,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     button:hover {
         background-color: #45a049;
+    }
+    .table_price{
+        width: 150px;
     }
 </style>
