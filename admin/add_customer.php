@@ -44,7 +44,7 @@ if (isset($_POST['btn'])) {
             <div class="addressphone">
                 <div class="form-group">
                 <label for="address" class="form-label">Địa chỉ</label><br>
-                    <input type="text" name="address" id="address" placeholder="Số nhà, tên đường,..."><br>
+                    <input type="text" name="address" id="address" placeholder="Số nhà, tên đường,..." required ><br>
                 </div>
             </div>
 

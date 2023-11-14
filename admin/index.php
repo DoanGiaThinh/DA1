@@ -15,17 +15,19 @@ include "../connect.php";
 </head>
 
 <body>
-    <div class="header">
-        <p>Trang Quản Trị</p>
-    </div>
     <div class="main">
         <div class="container">
+
+            <div class="top-menu">
+                <img src="../img/logo.png">
+
+            </div>
             <ul class="vertical-menu">
-                <li><a href="menu_admin.php">Về Trang Chủ</a></li>
-                <li><a href="index.php?page=product">Món</a></li>
-                <li><a href="index.php?page=customer">Khách Hàng</a></li>
-                <li><a href="index.php?page=order">Đơn Hàng</a></li>
-                <li><a href="index.php?page=order_details">Chi Tiết Đơn</a></li>
+                <a href="menu_admin.php"><li>Về Trang Chủ</li></a>
+                <a href="index.php?page=product"><li>Món</li></a>
+                <a href="index.php?page=customer"><li>Khách Hàng</li></a>
+                <a href="index.php?page=order"><li>Đơn Hàng</li></a>
+                <a href="index.php?page=order_details"><li>Chi Tiết Đơn</li></a>
             </ul>
         </div>
         <?php

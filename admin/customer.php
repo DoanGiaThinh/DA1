@@ -6,7 +6,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 <div class="contain">
     <div class="header-table">
-        <form class="search-form" method="post" action="http://localhost/DA1/index.php?page=customer">
+        <form class="search-form" method="post" action="index.php?page=customer">
             <input type="text" name="search" class="search-text" placeholder="Nhập vào tên hoặc email...">
             <input class="search-btn" type="submit" value="Tìm Khách Hàng">
         </form>
@@ -26,7 +26,24 @@ $result = mysqli_query($conn, $sql);
 
             <?php require("../timkiem/search_customer.php"); ?>       
 
-            <?php 
+            <?php
+            $num = mysqli_num_rows($result);
+            $numPages = 10;
+            $totalPage = ceil($num/$numPages);
+            echo '<div class="my_page">';
+            for($btn =1 ; $btn<=$totalPage; $btn++){
+                echo '<button class="my_button"><a href="?page=customer&npage='.$btn.'">'.$btn.'</a></button>';
+            }
+            echo '</div>';
+            if(isset($_GET['npage'])){
+                $npage = $_GET['npage'];
+            }
+            else{
+                $npage = 1;
+            }
+            $startinglimit= ($npage - 1)*$numPages;
+            $sql = "select * from khachhang limit ".$startinglimit.','.$numPages;
+            $result = mysqli_query($conn, $sql); 
             $i =1;
             while ($row = mysqli_fetch_array($result)) { ?>
                 <tbody>

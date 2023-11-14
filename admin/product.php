@@ -5,13 +5,14 @@
             <div id="popup-form" class="popup">
                 <div class="popup-content">
                     <span class="close">&times;</span>
+                    <div class="title">
+                        <h3>Tạo sản phẩm mới</h3>
+                    </div>
                     <form action=" index.php?page=product" method="post" enctype="multipart/form-data">
                         <div class="product">
-                            <div class="title">
-                                <h4>Tạo sản phẩm mới</h4>
-                            </div>
+                            
                             <div class="form-group">
-                                <img class="avatar" id="image" width="100" height="100">
+                                <div class="center_box"><img class="avatar" id="image" width="100" height="100"></div>
                                 <input type="file" class="form-control-file" name="anh" id="imageFile" onchange="chooseFile(event)" accept="image/*"><br>
                             </div>
                             <div class="form-group">
@@ -69,7 +70,25 @@
         }
         
         $sql = "select * from mon";
-        $result=mysqLi_query($conn,$sql);
+        $result = mysqLi_query($conn,$sql);
+        $num = mysqli_num_rows($result);
+        $numPages = 4;
+        $totalPage = ceil($num/$numPages);
+        echo '<div class="my_page">';
+        for($btn =1 ; $btn<=$totalPage; $btn++){
+
+            echo '<button class="my_button"><a href="?page=product&npage='.$btn.'">'.$btn.'</a></button>';
+        }
+        echo '</div>';
+        if(isset($_GET['npage'])){
+            $npage = $_GET['npage'];
+        }
+        else{
+            $npage = 1;
+        }
+        $startinglimit= ($npage - 1)*$numPages;
+        $sql = "select * from mon limit ".$startinglimit.','.$numPages;
+        $result = mysqli_query($conn, $sql);
         $i =1;
         while($row = mysqli_fetch_array($result)){      
              

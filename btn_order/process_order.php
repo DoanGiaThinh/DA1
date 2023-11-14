@@ -35,6 +35,9 @@ if (isset($_POST['btn_checkout'])) {
                             VALUES ((SELECT madonhang FROM donhang ORDER BY madonhang DESC LIMIT 1), (SELECT mamon FROM mon WHERE tenmon = '$productId'), '$quantity')";
       mysqli_query($conn, $sql_insert_detail);
     }
+
+    session_unset();
+    session_destroy();
   }
 // Lấy mã đơn hàng vừa tạo
 $result = mysqli_query($conn, "SELECT madonhang FROM donhang ORDER BY madonhang DESC LIMIT 1");

@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="edit_order.css">
-
+<link rel="stylesheet" href="../fontawesome/fontawesome6.4.2/css/all.css">
+<a id="tieptucmuasam" href="../customer/index_user.php"><i class="fa-solid fa-left-long"></i>Tiếp tục mua</a>
 <?php
 session_start();
 include("../connect.php");
@@ -39,7 +40,19 @@ if (isset($_POST['btn_update'])) {
   $sql = "UPDATE khachhang SET tenkhachhang='$tenkhachhang', diachi='$diachi', email='$email', sodienthoai='$sodienthoai' WHERE makhachhang = '".$this_id."'";
   mysqli_query($conn, $sql);
 
-  echo "Cập nhật thông tin thành công!";
+  echo '<h1 class="success-message">Cập nhật thông tin thành công!</h1>';
+  echo '
+  <div class="container">
+    <div class="order-info">
+      <p><b>Mã đơn hàng: </b>' . $orderId . '</p>
+      <p><b>Tên khách hàng: </b>' . $tenkhachhang . '</p>
+      <p><b>Email: </b>' . $email . '</p>
+      <p><b>Địa chỉ: </b>' . $diachi . '</p>
+      <p><b>Số điện thoại: </b>' . $sodienthoai . '</p>
+      <p class="total-price"><b>Tổng Thanh Toán: </b>' . number_format($totalPayment) .' VNĐ'. '</p>
+      <p><b>Phương thức thanh toán: </b> ' . $payment . '</p>
+    </div>
+  </div>';
   exit();
 }
 ?>

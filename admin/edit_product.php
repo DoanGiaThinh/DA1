@@ -1,5 +1,5 @@
 <?php
-include "connect.php";
+include "../connect.php";
 
 $this_id = $_GET['this_id'];
 
@@ -22,21 +22,21 @@ if(isset($_POST['btn']) ){
         $img_name = $_FILES['anh']['name'];
         $img_extension = pathinfo($img_name, PATHINFO_EXTENSION);
         $img = uniqid().'.'.$img_extension;
-        move_uploaded_file($img_tmp_name, 'img/SanPham/'.$img);
+        move_uploaded_file($img_tmp_name, '../img/SanPham/'.$img);
     }
 
     $sql = "UPDATE mon SET tenmon='$tenmon', gia='$gia', anh='$img', soluong='$soluong' WHERE mamon='".$this_id."'";
 
     mysqli_query($conn, $sql);
 
-    header('location: http://localhost/DA1/index.php?page=product');
+    header('location: index.php?page=product');
 }
 ?>
 <link rel="stylesheet" href="edit_product.css">
 <h1>Sửa Sản Phẩm: <?php echo $row['tenmon']; ?></h1>
 
 <form method="post" enctype="multipart/form-data">
-    <span><img src="img/SanPham/<?php echo $row['anh'] ?>" class="avatar"  id="image" width="100" height="100"></span>
+    <span><img src="../img/SanPham/<?php echo $row['anh'] ?>" class="avatar"  id="image" width="100" height="100"></span>
     <input type="file" name="anh" id="imageFile" onchange="chooseFile(event)" accept="image/*"><br>
 
     <p>Tên món</p>

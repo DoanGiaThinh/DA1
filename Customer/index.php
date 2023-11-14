@@ -1,8 +1,8 @@
 
 <title>Trang Người Dùng</title>
-<link rel="stylesheet" href="../Menu_Main/reset_main.css">
-<link rel="stylesheet" href="../Menu_Main/base_main.css">
-<link rel="stylesheet" href="../Menu_Main/menu_main.css">
+<link rel="stylesheet" href="reset_main.css">
+<link rel="stylesheet" href="base_main.css">
+<link rel="stylesheet" href="menu_main.css">
 <link rel="stylesheet" href="../libary/fontawesome-free-6.4.2-web (1)/fontawesome-free-6.4.2-web/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

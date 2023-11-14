@@ -51,3 +51,19 @@ button:hover {
 .table_price{
     width: 150px;
 }
+table {
+    position: relative;
+}
+.my_page{
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    margin: 10px;
+}
+.my_button{
+    margin-left: 4px;
+}
+.my_button a{
+    color: white;
+    text-decoration: none;
+}

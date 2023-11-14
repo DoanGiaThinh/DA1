@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="checkout.css">
 
-
 <?php
 session_start();
 ?>

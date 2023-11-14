@@ -20,11 +20,6 @@
     font-weight: bold;
     font-size: 20px;
 }
-.product-row1 {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
 
 .product-row1 .product {
     display: inline-block;

@@ -1,4 +1,3 @@
-
 <title>Trang Shipper</title>
 <?php
 include("../connect.php");
@@ -38,7 +37,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <th></th>
     </tr>
     <?php
-    // Hiển thị kết quả truy vấn
+    $num = mysqli_num_rows($result);
+    $numPages = 6;
+    $totalPage = ceil($num/$numPages);
+    echo '<div class="my_page">';
+    for($btn = 1; $btn <= $totalPage; $btn++){
+        echo '<a href="?page=shipper&npage='.$btn.'"><button class="my_button">'.$btn.'</button></a>';
+    }
+    echo '</div>';
+    if(isset($_GET['npage'])){
+        $npage = $_GET['npage'];
+    }
+    else{
+        $npage = 1;
+    }
+    $startinglimit= ($npage - 1)*$numPages;
+    $sql = "SELECT dh.madonhang, kh.tenkhachhang, kh.sodienthoai, kh.diachi, dh.tonggia, dh.phuongthucthanhtoan, dh.trangthai 
+            FROM donhang dh, khachhang kh 
+            WHERE dh.makhachhang = kh.makhachhang limit ".$startinglimit.','.$numPages;
+    $result = mysqli_query($conn, $sql);
+    // Hiển thị kếtquả truy vấn
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
