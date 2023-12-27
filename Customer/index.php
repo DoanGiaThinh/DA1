@@ -56,14 +56,13 @@
         <!-- form search -->
         <div class="wrapper container">
             
-            <from class="from--search">
-                <div class="from--search__input">
-                    <input type="text" placeholder="Tìm kiếm món ăn ở đây" id="search__input">
-                    <a href="">
-                        <i class="fromsearch--icon__serch fa-solid fa-magnifying-glass"></i>
-                    </a>
+            <form class="form--search" method="get" action="preview_customer.php">
+                <div class="form--search__input">
+                    <h2>Tra Cứu Đơn Hàng</h2>
+                    <input type="text" placeholder="Nhập mã đơn hàng/tên khách hàng,..." name="search" id="search__input">
+                    <button type="submit" class="form--search__icon__search fa-solid fa-magnifying-glass"></button>
                 </div>
-            </from>
+            </form>
         </div>
         <!-- /* end form search */ -->
         <!-- content -->

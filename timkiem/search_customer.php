@@ -1,4 +1,3 @@
-
 <?php
 
 if (isset($_POST['search'])) {
@@ -36,8 +35,7 @@ if (!empty($search)) {
             $searchResults .= '<td>' . $email . '</td>';
             $searchResults .= '<td>' . $phone . '</td>';
             $searchResults .= '<td>
-                                    <span><a class="btn btn-dark" href="edit_customer.php?this_id=' . $customerId . '"><i class="fa-solid fa-pen-to-square"></i></a></span>
-                                    <span><a class="btn btn-dark" href="delete_customer.php?this_id=' . $customerId . '"><i class="fa-solid fa-trash-can"></i></a></span>
+                                    <span><a href="delete_customer.php?erro=Khách hàng đang có đơn không thể xoá&this_id=' . $customerId . '"><i class="fa-solid fa-trash-can"></i></a></span>
                               </td>';
             $searchResults .= '</tr>';
         $i++;
@@ -67,5 +65,8 @@ if (!empty($search)) {
     }
     .search-btn{
         margin-left: -38px;
+    }
+    .fa-trash-can{
+        color: black;
     }
 </style>

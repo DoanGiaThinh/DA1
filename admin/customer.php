@@ -24,7 +24,7 @@ $result = mysqli_query($conn, $sql);
                 <th class='my-table'>Chức Năng</th>
             </thead>
 
-            <?php require("../timkiem/search_customer.php"); ?>       
+                 
 
             <?php
             $num = mysqli_num_rows($result);
@@ -32,7 +32,7 @@ $result = mysqli_query($conn, $sql);
             $totalPage = ceil($num/$numPages);
             echo '<div class="my_page">';
             for($btn =1 ; $btn<=$totalPage; $btn++){
-                echo '<button class="my_button"><a href="?page=customer&npage='.$btn.'">'.$btn.'</a></button>';
+                echo '<button class="btn-page"><a href="?page=customer&npage='.$btn.'">'.$btn.'</a></button>';
             }
             echo '</div>';
             if(isset($_GET['npage'])){
@@ -44,6 +44,7 @@ $result = mysqli_query($conn, $sql);
             $startinglimit= ($npage - 1)*$numPages;
             $sql = "select * from khachhang limit ".$startinglimit.','.$numPages;
             $result = mysqli_query($conn, $sql); 
+            require("../timkiem/search_customer.php");
             $i =1;
             while ($row = mysqli_fetch_array($result)) { ?>
                 <tbody>
@@ -72,7 +73,7 @@ $result = mysqli_query($conn, $sql);
     function showPopup(message) {
         var confirmed = confirm(message);
         if (confirmed) {
-            window.location.href = 'http://localhost/DA1/index.php?page=customer';
+            window.location.href = 'index.php?page=customer';
         }
     }
 

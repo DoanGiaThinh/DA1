@@ -77,7 +77,7 @@
         echo '<div class="my_page">';
         for($btn =1 ; $btn<=$totalPage; $btn++){
 
-            echo '<button class="my_button"><a href="?page=product&npage='.$btn.'">'.$btn.'</a></button>';
+            echo '<button class="btn-page"><a href="?page=product&npage='.$btn.'">'.$btn.'</a></button>';
         }
         echo '</div>';
         if(isset($_GET['npage'])){

@@ -1,0 +1,178 @@
+body{
+    background: url('img/background.svg') no-repeat fixed bottom;
+}
+#account-form {
+    max-width: 600px;
+    margin: 0 auto ;
+    padding: 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+legend {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #254753;
+}
+
+
+select {
+    width: 100%;
+    height: 34px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+#container-capTK {
+    text-align: center;
+}
+
+/* "nút" cấp tài khoản */
+#btn-capTK {
+    width: 160px;
+    height: 50px;
+    margin: 0 auto 15px;
+    background-color: #fff;
+    border: thin solid rgba(0, 0, 0, 0.4);
+    border-radius: 36px 0px;
+    color: #001c44;
+    font-size: 18px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#btn-capTK:hover {
+    background-color: #254753;
+    color: #fff;
+    transition: 0.4s;
+}
+
+.tendangnhap{
+    max-width: 16ch;
+}
+
+.quyen{
+    max-width: 66px;
+    text-align: center !important;
+}
+.sdt{
+    max-width: 120px;
+}
+.ngaytao{
+    min-width: 12ch;
+}
+thead td{
+    text-align: center !important;
+}
+
+#captk {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    height: 50px;
+    width: 140px;
+    line-height: 50px;
+    background-color: #254753;
+    color: #fff;
+    margin: 10px 0 15px 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    
+}
+
+#captk:hover{
+    background-color:#fff;
+  border: 1px solid #254753;
+  font-weight: bold;
+  transition: 0.3s;
+  color: #254753;
+}
+a{
+    text-decoration: none;
+}
+.cssbuttons-io-button {
+    background: #a370f0;
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #714da6;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+  }
+  
+  .cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+    right: 0.3em;
+    transition: all 0.3s;
+  }
+  
+  .cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+  }
+  
+  .cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #7b52b9;
+  }
+  
+  .cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+  }
+  
+  .cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
+  }
+  

@@ -1,34 +1,95 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+  .success-message {
+  font-size: 30px;
+  color: #4caf50;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 20px;
-}
 .container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+}
+
+.order-info {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  
+}
+
+.order-info p {
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: #333333;
+}
+
+
+.order-info .total-price {
+  font-size: 20px;
+  color: #ee4d2d;
+  margin-top: 20px;
+}
+
+#tieptucmuasam {
+  text-decoration: none;
+  font-size: 16px;
+  display: inline-block;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #ffffff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#tieptucmuasam:hover {
+  background-color: #ff6347;
+}
+h1 {
+  text-align: center;
+  color: #333;
+  }
+  
+  form {
   max-width: 600px;
   margin: 0 auto;
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-h1 {
-  text-align: center;
-  color: #333;
-}
-.order-info {
-  margin-top: 20px;
-}
-.order-info p {
-  margin: 5px 0;
-}
-.edit-link {
+  }
+  
+  form p {
+  margin-bottom: 5px;
+  }
+  
+  form input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  }
+  
+  form button[type="submit"] {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  }
+  .edit-link {
   display: block;
   text-align: center;
   margin-top: 20px;
@@ -39,21 +100,14 @@ h1 {
   font-weight: bold;
 }
 .edit_info {
-    padding: 10px 20px;
-    background-color: #5fbc64;
-    border: 1px solid #5fbc64;
-    color: #fff;
-  }
+  padding: 10px 20px;
+  background-color:  #4CAF50;
+  border: 1px solid  #4CAF50;
+  color: #fff;
+}
 
 .edit-link a:hover {
-color: #5fbc64;
-background-color: #fff;
-border: 1px solid #ccc;
-}
-#tieptucmuasam{
-  text-decoration: none;
-  font-size: 20px;
-  display: flex;
-  text-align: center;
-  color: #ee4d2d;
+color: #fff;
+background-color: #ff6347;
+border: 1px solid #ff6347;
 }

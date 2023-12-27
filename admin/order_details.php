@@ -10,8 +10,14 @@
     echo "<tr> 
                 <th class='my-header stt'>STT</th>
                 <th class='my-header'>Mã Đơn Hàng</th>
-                <th class='my-header'>Mã Món</th>
+                <th class='my-header'>Mã Khách Hàng</th>
+                <th class='my-header'>Địa Chỉ</th>
+                <th class='my-header'>Số Điện Thoại</th>
+                <th class='my-header'>Tên Món</th>
                 <th class='my-header'>Số Lượng</th>
+                <th class='my-header'>Tổng Giá</th>
+                <th class='my-header'>Phương thức thanh toán</th>
+                <th class='my-header'>Ngày đặt hàng</th>
             </tr>";
 
     if ($result->num_rows > 0) {
@@ -21,7 +27,7 @@
         $totalPage = ceil($num / $numPages);
         echo '<div class="my_page">';
         for ($btn = 1; $btn <= $totalPage; $btn++) {
-            echo '<button class="my_button"><a href="?page=order_details&npage=' . $btn . '">' . $btn . '</a></button>';
+            echo '<button class="btn-page"><a href="?page=order_details&npage=' . $btn . '">' . $btn . '</a></button>';
         }
         echo '</div>';
         if (isset($_GET['npage'])) {
@@ -30,27 +36,50 @@
             $npage = 1;
         }
         $startinglimit = ($npage - 1) * $numPages;
-        // $sql = "select * from chitietdonhang limit " . $startinglimit . ',' . $numPages;
+        $sql = "select * from chitietdonhang limit " . $startinglimit . ',' . $numPages;
         if (isset($_GET['madonhang'])) {
             $selectedMadon = $_GET['madonhang'];
-            $sql = "SELECT * FROM chitietdonhang WHERE madonhang = '$selectedMadon' limit " . $startinglimit . ',' . $numPages;
+            $sql = "SELECT dh.madonhang, kh.tenkhachhang, kh.diachi, kh.sodienthoai, m.tenmon , ctd.soluong, dh.tonggia, dh.phuongthucthanhtoan, dh.ngaydathang 
+            FROM chitietdonhang ctd, donhang dh, mon m, khachhang kh 
+            WHERE ctd.madonhang = dh.madonhang 
+            AND ctd.mamon = m.mamon 
+            AND dh.makhachhang = kh.makhachhang 
+            AND ctd.madonhang = '$selectedMadon' limit " . $startinglimit . ',' . $numPages;
         } else {
-            $sql = "SELECT * FROM chitietdonhang";
+            $sql = "SELECT dh.madonhang, kh.tenkhachhang, kh.diachi, kh.sodienthoai, m.tenmon , ctd.soluong, dh.tonggia, dh.phuongthucthanhtoan, dh.ngaydathang 
+            FROM chitietdonhang ctd, donhang dh, mon m, khachhang kh 
+            WHERE ctd.madonhang = dh.madonhang 
+            AND ctd.mamon = m.mamon 
+            AND dh.makhachhang = kh.makhachhang";
         }
         $result = mysqli_query($conn, $sql);
         $i = 1;
         while ($row = $result->fetch_assoc()) {
+            if ($i > $startinglimit && $i <= ($startinglimit + $numPages)) {
             $madonhang = $row['madonhang'];
-            $mamon = $row['mamon'];
+            $tenkhachhang = $row['tenkhachhang'];
+            $diachi = $row['diachi'];
+            $sodienthoai = $row['sodienthoai'];
+            $tenmon = $row['tenmon'];
             $soluong = $row['soluong'];
+            $tonggia = $row['tonggia'];
+            $phuongthucthanhtoan = $row['phuongthucthanhtoan'];
+            $ngaydathang = $row['ngaydathang'];
 
             // Xử lý dữ liệu ở đây
             echo "<tr>";
             echo "<td>$i</td>";
             echo "<td>$madonhang</td>";
-            echo "<td>$mamon</td>";
+            echo "<td>$tenkhachhang</td>";
+            echo "<td>$diachi</td>";
+            echo "<td>$sodienthoai</td>";
+            echo "<td>$tenmon</td>";
             echo "<td>$soluong</td>";
+            echo "<td>$tonggia</td>";
+            echo "<td>$phuongthucthanhtoan</td>";
+            echo "<td>$ngaydathang</td>";
             echo "</tr>";
+            }
             $i++;
         }
     } else {

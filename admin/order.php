@@ -1,10 +1,11 @@
- 
+
 <div class="contain">
     <div class="header-table">
         <form class="search-form" method="post" action="index.php?page=order">
             <input type="text" name="search" class="search-text" placeholder="Nhập Mã Đơn, Ngày đặt, Trạng thái">
             <input class="search-btn" type="submit" value="Tìm Đơn">
         </form>
+        
     </div>
     <?php
         // Câu truy vấn SQL
@@ -25,12 +26,13 @@
         
         if ($result->num_rows > 0) {
             // Duyệt qua từng hàng kết quả
+            
             $num = mysqli_num_rows($result);
             $numPages = 10;
             $totalPage = ceil($num/$numPages);
             echo '<div class="my_page">';
             for($btn =1 ; $btn<=$totalPage; $btn++){
-                echo '<button class="my_button"><a href="?page=order&npage='.$btn.'">'.$btn.'</a></button>';
+                echo '<button class="btn-page"><a href="?page=order&npage='.$btn.'">'.$btn.'</a></button>';
             }
             echo '</div>';
             if(isset($_GET['npage'])){
@@ -42,6 +44,7 @@
             $startinglimit= ($npage - 1)*$numPages;
             $sql = "select * from donhang limit ".$startinglimit.','.$numPages;
             $result = mysqli_query($conn, $sql);
+            require("../timkiem/search_order.php");
             $i = 1;
             while ($row = $result->fetch_assoc()) {
                 $madonhang = $row['madonhang'];
@@ -68,8 +71,9 @@
             echo "<tr><td colspan='8'>Không có dữ liệu</td></tr>";
         }
         echo "</table>";
-
+        
         $conn->close();
     ?>
 </div>
+
 

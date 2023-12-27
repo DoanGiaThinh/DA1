@@ -150,11 +150,11 @@
 .container{
     padding-block: 33px;
 }
-.from--search{
+.form--search{
     text-align: center;
     align-items: center;
 }
-.from--search__input #search__input{
+#search__input{
     border-radius: 20px;
     border: 1px solid #CBCACA;
     background: #d9d9d91f;
@@ -164,11 +164,13 @@
     flex-shrink: 0;
     padding-left: 30px;
 }
-.fromsearch--icon__serch{
-    margin-left: 15px;
-    scale: 200%;
-    /* color: black; */
+.form--search__icon__search{
+    font-size: 20px;
+    margin-left: -44px;
+    border: none;
+    background-color: #FFF;
 }
+
 /* end form search */
 /* content1 */
 .content1{

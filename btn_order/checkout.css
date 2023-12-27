@@ -29,6 +29,25 @@ img{
 .main{
     display: flex;
     justify-content: space-evenly;
+    padding: 20px 0;
+}
+
+
+#quaylaigiohang{
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    width: 160px;
+    padding: 10px 16px;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: #136AED;
+    text-align: center;
+    border-radius: 20px 0px;
+}
+#quaylaigiohang:hover{
+    font-weight: bold;
+    background-color: #103c7f;
 }
 
 /* -------------------------------------------------------- */
@@ -106,6 +125,8 @@ select {
 
     .transport p {
         margin-bottom: 10px;
+        color: #136AED;
+        font-size: 18px;
     }
 
     .transport h2 {
@@ -138,17 +159,24 @@ select {
         float: right;
         font-size: 20px;
         font-weight: bold;
+        color: #007bff;
     }
     .btn_checkout{
         float: right;
         height: 50px;
-        width: 100px;
+        width: 180px;
+        font-size: 20px;
         background-color: #04AA6D;
         color: white;
         border: 1px solid #04AA6D;
+        border-radius: 5px;
+        cursor: pointer;
     }
     .btn_checkout:hover{
         background-color: white;
         color: #04AA6D;
-        border: 1px solid #333;
+        border: 1px solid #04AA6D;
+        font-weight: bold;
+        transition: .3s;
+        
     }

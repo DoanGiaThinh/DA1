@@ -11,9 +11,9 @@ if (isset($_POST['search'])) {
     $search = ""; // Nếu không có giá trị tìm kiếm thì mặc định là rỗng
 }
 
-if (isset($search)) {
+if (!empty($search)) {
     $sql = "SELECT * FROM donhang WHERE madonhang LIKE '%$search%' OR ngaydathang LIKE '%$search%' OR trangthai LIKE '%$search%'";
-    $result = $conn->query($sql);
+    $result = mysqli_query($conn, $sql);
 
     $searchResults = '';
 
@@ -37,6 +37,7 @@ if (isset($search)) {
             $searchResults .= '<td>' . $totalPrice . '</td>';
             $searchResults .= '<td>' . $pttt . '</td>';
             $searchResults .= '<td>' . $trangthai. '</td>';
+            $searchResults .= "<td><a class='fa-regular fa-file-lines' href='?page=order_details&madonhang="."$orderId"."'></a></td>";
             $searchResults .= '</tr>';
         $i++;
         }

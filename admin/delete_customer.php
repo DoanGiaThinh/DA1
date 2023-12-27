@@ -11,7 +11,7 @@
         $result_order = mysqli_query($conn,$sql_order);
         $row_num_order = mysqli_num_rows($result_order);
         if(!empty($row_num_order))  {
-            header("Location: index.php?page=customer&erro=Khách hàng đang có đơn hàng");
+            header("Location: index.php?page=customer&erro=Khách hàng đang có đơn hàng không thể xoá");
         }
 
         else{

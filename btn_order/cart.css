@@ -56,15 +56,24 @@ img {
 
 #tieptucmuasam{
   text-decoration: none;
-  font-size: 20px;
-  display: flex;
-  text-align: center;
-  color: #ee4d2d;
+ color: #fff;
+ display: block;
+ width: 160px;
+ padding: 10px 16px;
+ margin-top: 20px;
+ margin-left: 20px;
+ background-color: #136AED;;
+ text-align: center;
+ border-radius: 20px 0px;
+}
+
+#tieptucmuasam:hover{
+  font-weight: bold;
+  background-color: #103c7f;
 }
 
 .fa-solid{
   font-size: 24px;
-  margin: 0 20px;
 }
 
 #update_cart {
@@ -95,6 +104,7 @@ img {
   top: 40px;
   right: 40px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 

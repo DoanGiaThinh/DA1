@@ -4,6 +4,7 @@
 session_start();
 ?>
 
+<a id="quaylaigiohang" href="cart.php">Quay lại giỏ hàng</a>
 <form action="process_order.php"  method = "post">
     <div class="main">
         <div class="customer">
@@ -67,12 +68,11 @@ session_start();
                         echo "<td>" . number_format($tongtien) . " đ</td>";
                         echo "</tr>";
 
-                        $totalPayment += $tongtien; // Cộng vào tổng thanh toán                        
+                        $totalPayment += $tongtien+25000; // Cộng vào tổng thanh toán                        
                     }
                 }
                 
                 echo "</table>";
-                // $_SESSION['quantity'] = $quantity;
                 echo "<p>Tổng thanh toán: " . number_format($totalPayment) . " đ</p>";
                 // Đóng kết nối CSDL
                 $conn->close();

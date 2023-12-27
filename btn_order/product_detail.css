@@ -84,8 +84,8 @@ h1 {
 
 #addToCart:hover {
   background-color: #ffffff;
-  color: #333;
-  border: #333 solid 1px;
+  color: #136AED;
+  border: #136AED solid 1px;
 }
 
 
@@ -163,11 +163,19 @@ h1 {
 }
 
 #tieptucmua{
-  display: flex;
-  align-items: center;
   text-decoration: none;
-  font-size: 20px;
-  color: #d0011b;
+  color: #fff;
+  display: block;
+  width: 160px;
+  padding: 10px 16px;
+  background-color: #136AED;;
+  text-align: center;
+  border-radius: 20px 0px;
+}
+
+#tieptucmua:hover{
+  font-weight: bold;
+  background-color: #103c7f;
 }
 .quantity {
   display: flex;
@@ -213,5 +221,5 @@ h1 {
 
 .fa-left-long::before {
   content: "\f30a";
-  margin-right: 20px;
+  margin-right: 10px;
 }

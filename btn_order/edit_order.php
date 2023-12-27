@@ -9,13 +9,17 @@ if (isset($_GET['id'])) {
   $orderId = $_GET['id'];
 
   // Kiểm tra xem đơn hàng tồn tại trong cơ sở dữ liệu hay không
-  $sql_check_order = "SELECT * FROM khachhang kh, donhang dh WHERE kh.makhachhang = dh.makhachhang and dh.madonhang ='$orderId'";
+  $sql_check_order = "SELECT * FROM khachhang kh, mon m,chitietdonhang ctd , donhang dh 
+  WHERE ctd.madonhang = dh.madonhang 
+  AND ctd.mamon = m.mamon 
+  and kh.makhachhang = dh.makhachhang and dh.madonhang ='$orderId'";
   $result = mysqli_query($conn, $sql_check_order);
   if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $name = $row['tenkhachhang'];
     $email = $row['email'];
     $diachi = $row['diachi'];
+    $tenmon = $row['tenmon'];
     $sodienthoai = $row['sodienthoai'];
     $totalPayment = $row['tonggia'];
     $payment = $row['phuongthucthanhtoan'];
@@ -27,8 +31,22 @@ if (isset($_GET['id'])) {
   echo "Mã đơn hàng không được cung cấp.";
   exit;
 }
-$sql = "SELECT makhachhang FROM donhang WHERE madonhang ='$orderId'";
-$result = mysqli_query($conn, $sql);
+
+$sql_menu = "SELECT m.tenmon FROM donhang dh,chitietdonhang ctd, mon m 
+WHERE m.mamon = ctd.mamon 
+AND ctd.madonhang = dh.madonhang 
+AND dh.madonhang = '$orderId'";
+$result_menu = mysqli_query($conn, $sql_menu);
+$menus = array();
+
+if (mysqli_num_rows($result_menu) > 0) {
+  while ($row_menu = mysqli_fetch_assoc($result_menu)) {
+    $menus[] = $row_menu['tenmon'];
+  }
+}
+
+
+
 if (isset($_POST['btn_update'])) {
   
   $this_id = $row['makhachhang'];
@@ -49,6 +67,7 @@ if (isset($_POST['btn_update'])) {
       <p><b>Email: </b>' . $email . '</p>
       <p><b>Địa chỉ: </b>' . $diachi . '</p>
       <p><b>Số điện thoại: </b>' . $sodienthoai . '</p>
+      <p><b>Tên Món: </b>' . implode(", ", $menus) . '</p>
       <p class="total-price"><b>Tổng Thanh Toán: </b>' . number_format($totalPayment) .' VNĐ'. '</p>
       <p><b>Phương thức thanh toán: </b> ' . $payment . '</p>
     </div>
