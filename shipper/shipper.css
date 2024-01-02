@@ -67,3 +67,26 @@ table {
     color: white;
     text-decoration: none;
 }
+h1{
+    padding-top: 16px;
+    padding-left: 72px;
+}
+.logout_sp{
+    float: right;
+    display: flex;
+    margin: 10px auto;
+    flex-direction: column;
+    text-align: center;
+    padding-right: 37px;
+}
+.hello{
+    font-size: 22px;
+}
+.text-logout{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+.text-logout:hover{
+    color: red;
+}

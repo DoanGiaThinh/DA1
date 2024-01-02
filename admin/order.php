@@ -15,11 +15,11 @@
         echo "<table class='my-table'>";
         echo "<tr> 
                 <th class='my-header'>STT</th>
-                <th class='my-header'>Mã Đơn Hàng</th>
-                <th class='my-header'>Mã Khách Hàng</th>
+                <th class='my-header'>Mã ĐH</th>
+                <th class='my-header'>Mã KH</th>
                 <th class='my-header'>Ngày Đặt Hàng</th>
                 <th class='my-header'>Tổng Giá</th>
-                <th class='my-header'>Phương Thức Thanh Toán</th>
+                <th class='my-header'>Thanh Toán</th>
                 <th class='my-header'>Trạng Thái</th>
                 <th class='my-header'>Xem Chi Tiết</th>
             </tr>";
@@ -45,7 +45,7 @@
             $sql = "select * from donhang limit ".$startinglimit.','.$numPages;
             $result = mysqli_query($conn, $sql);
             require("../timkiem/search_order.php");
-            $i = 1;
+            $i =$startinglimit +1;
             while ($row = $result->fetch_assoc()) {
                 $madonhang = $row['madonhang'];
                 $makhachhang = $row['makhachhang'];

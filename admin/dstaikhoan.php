@@ -23,15 +23,15 @@
 
 <table class="main-table">
     <thead>
-        <td>STT</td>
-        <td class="matk">Mã TK</td>
-        <td class="tendangnhap">Tài Khoản</td>
-        <td class="hoten">Họ Tên</td>
-        <td class="diachi">Địa Chỉ</td>
-        <td class="sdt">SĐT</td>
-        <td class="email">Email</td>
-        <td class="quyen">Quyền</td>
-        <td class="ngaytao">Ngày Tạo</td>
+        <th>STT</th>
+        <th class="matk">Mã TK</th>
+        <th class="tendangnhap">Tài Khoản</th>
+        <th class="hoten">Họ Tên</th>
+        <th class="diachi">Địa Chỉ</th>
+        <th class="sdt">SĐT</th>
+        <th class="email">Email</th>
+        <th class="quyen">Quyền</th>
+        <th class="ngaytao">Ngày Tạo</th>
     </thead>
     <?php
     function layTK($conn)

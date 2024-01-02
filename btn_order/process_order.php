@@ -34,17 +34,34 @@ if (isset($_POST['btn_checkout'])) {
     foreach ($cart as $productId => $quantity) {
       // Thực hiện truy vấn INSERT cho từng món hàng
       $sql_insert_detail = "INSERT INTO chitietdonhang (madonhang, mamon, soluong)
-                            VALUES ((SELECT madonhang FROM donhang ORDER BY madonhang DESC LIMIT 1), (SELECT mamon FROM mon WHERE tenmon = '$productId'), '$quantity')";
+                          VALUES ((SELECT madonhang FROM donhang ORDER BY madonhang DESC LIMIT 1), (SELECT mamon FROM mon WHERE tenmon = '$productId'), '$quantity')";
       mysqli_query($conn, $sql_insert_detail);
   
-      // Lấy tên món từ cơ sở dữ liệu
-      $sql_get_product_name = "SELECT tenmon FROM mon WHERE tenmon = '$productId'";
-      $result = mysqli_query($conn, $sql_get_product_name);
-      $row = mysqli_fetch_assoc($result);
-      $tenmon = $row['tenmon'];
+      // Lấy số lượng hiện tại từ cơ sở dữ liệu
+      $sql_get_current_quantity = "SELECT soluong FROM mon WHERE tenmon = '$productId'";
+      $result_current_quantity = mysqli_query($conn, $sql_get_current_quantity);
+      $row_current_quantity = mysqli_fetch_assoc($result_current_quantity);
+      $currentQuantity = $row_current_quantity['soluong'];
   
-      // Thêm tên món vào mảng
-      $tenmon_array[] = $tenmon;
+      // Kiểm tra nếu số lượng sau khi cập nhật sẽ lớn hơn hoặc bằng 0
+      if ($currentQuantity - $quantity >= 0) {
+          // Cập nhật số lượng trong bảng mon
+          $sql_update_quantity = "UPDATE mon SET soluong = GREATEST(soluong - '$quantity', 0) WHERE tenmon = '$productId'";
+          mysqli_query($conn, $sql_update_quantity);
+  
+          // Lấy tên món từ cơ sở dữ liệu
+          $sql_get_product_name = "SELECT tenmon FROM mon WHERE tenmon = '$productId'";
+          $result = mysqli_query($conn, $sql_get_product_name);
+          $row = mysqli_fetch_assoc($result);
+          $tenmon = $row['tenmon'];
+  
+          // Thêm tên món vào mảng
+          $tenmon_array[] = $tenmon;
+      } else {
+          // Số lượng không đủ, hiển thị thông báo 'Hết hàng'
+          echo '<h1 class="error-message">Sản phẩm: ' . $productId . ' Không đủ đáp ứng nhu cầu của bạn rồi! Chỉ còn có '.$currentQuantity.' phần mà thôi!</h1>';
+          exit(); // Dừng chương trình sau khi hiển thị thông báo
+      }
     }
   
     // Chuyển mảng thành một chuỗi

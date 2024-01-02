@@ -89,7 +89,7 @@
         $startinglimit= ($npage - 1)*$numPages;
         $sql = "select * from mon limit ".$startinglimit.','.$numPages;
         $result = mysqli_query($conn, $sql);
-        $i =1;
+        $i =$startinglimit +1;
         while($row = mysqli_fetch_array($result)){      
              
     ?>  

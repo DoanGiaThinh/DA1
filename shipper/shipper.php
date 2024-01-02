@@ -23,18 +23,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (isset($_SESSION['user'])) {
+    $hello = $_SESSION['user'];
+?>
+
 <link rel="stylesheet" href="shipper.css">
+<div class="logout_sp">
+    <i><div class="hello"><?php echo "Xin chào ". $hello ."!"?></div></i>
+    <a  class="text-logout" href="../logout.php"><div>Đăng Xuất</div></a>
+</div>
 <h1>Quản lý đơn hàng</h1>
 <table>
     <tr>
-        <th>Mã đơn hàng</th>
-        <th>Tên khách hàng</th>
-        <th>Số điện thoại</th>
+        <th style="width: 52px;">Mã ĐH</th>
+        <th>Tên KH</th>
+        <th>SĐT</th>
         <th>Địa chỉ</th>
         <th>Tổng giá</th>
-        <th>Phương thức thanh toán</th>
-        <th>Trạng thái</th>
-        <th></th>
+        <th style="width: 84px;">Thanh Toán</th>
+        <th style="width: 74px;">Trạng thái</th>
+        <th style="width: 152px;"></th>
     </tr>
     <?php
     $num = mysqli_num_rows($result);
@@ -86,3 +99,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     ?>
 </table>
+<?php
+} else {
+    header('location: login.php');
+}
+?>

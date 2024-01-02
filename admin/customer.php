@@ -16,12 +16,12 @@ $result = mysqli_query($conn, $sql);
         <table class='my-table'>
             <thead>
                 <th class='my-table stt'>STT</th>
-                <th class='my-table'>Mã Khách Hàng</th>
-                <th class='my-table'>Tên Khách Hàng</th>
+                <th class='my-table'>Mã KH</th>
+                <th class='my-table'>Tên KH</th>
                 <th class='my-table'>Địa Chỉ</th>
                 <th class='my-table'>Email</th>
-                <th class='my-table'>Số Điện Thoại</th>
-                <th class='my-table'>Chức Năng</th>
+                <th class='my-table'>SĐT</th>
+                <th class='my-table' style="width: 100px;">Chức Năng</th>
             </thead>
 
                  
@@ -45,14 +45,14 @@ $result = mysqli_query($conn, $sql);
             $sql = "select * from khachhang limit ".$startinglimit.','.$numPages;
             $result = mysqli_query($conn, $sql); 
             require("../timkiem/search_customer.php");
-            $i =1;
+            $i =$startinglimit +1;
             while ($row = mysqli_fetch_array($result)) { ?>
                 <tbody>
                     <tr>
                     <td><?php echo $i?></td>
                         <td><?php echo $row['makhachhang'] ?></td>
                         <td><?php echo $row['tenkhachhang'] ?></td>
-                        <td><?php echo $row['diachi'] ?></td>
+                        <td  style="text-align: left;"><?php echo $row['diachi'] ?></td>
                         <td><?php echo $row['email'] ?></td>
                         <td><?php echo $row['sodienthoai'] ?></td>
                         <td>

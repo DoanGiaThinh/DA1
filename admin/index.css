@@ -11,7 +11,9 @@ a{
     display: flex;
 }
 
-
+.vertical-menu{
+    padding-top: 70px;
+}
 .container {
     width: 300px;
     height: 100vh;
@@ -44,7 +46,11 @@ a{
 .text-logout{
     text-align: center;
     padding-top: 10px ;
-    font-size: 18px;
+    font-size: 20px;
+    position: absolute;
+    bottom: 20px;
+    margin: 0 auto;
+    left: 100px;
 }
 .text-logout:hover{
     color: #F5860D;
@@ -61,6 +67,12 @@ a{
     width: 100%;
     text-align: center;
     border-collapse: collapse;
+}
+td{
+    padding: 10px;
+}
+th {
+    background-color: #f2f2f2;
 }
 .my_page{
     position: absolute;
@@ -222,3 +234,9 @@ table td {
     background-color: #ee6457; 
     color: #fff; 
   }
+tr:hover {
+    background-color: #f5f5f5;
+}
+thead{
+    font-weight: bold;
+}

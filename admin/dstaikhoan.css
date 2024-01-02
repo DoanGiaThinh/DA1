@@ -127,24 +127,18 @@ select {
     transition: 0.4s;
 }
 
+th{
+    padding: 10px;
+}
+.matk{
+    width: 72px;
+}
 .tendangnhap{
-    max-width: 16ch;
+    width: 100px;
 }
-
-.quyen{
-    max-width: 66px;
-    text-align: center !important;
+.diachi, .email{
+    text-align: left;
 }
-.sdt{
-    max-width: 120px;
-}
-.ngaytao{
-    min-width: 12ch;
-}
-thead td{
-    text-align: center !important;
-}
-
 #captk {
     text-decoration: none;
     display: block;

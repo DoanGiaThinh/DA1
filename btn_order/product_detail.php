@@ -32,7 +32,8 @@ if (isset($_GET['id'])) {
         echo '<div class="product_image"><img src="../img/SanPham/' . $anh . '"></div>';
         echo '<div class="name_price">
               <div class="product_name"><p>' . $tenmon . '</p> </div>
-              <div class="product_price"><span>' . number_format($gia) .' đ</span></div>';
+              <div class="product_price"><span>' . number_format($gia) .' đ</span></div>
+              <div class="product_du">'.'Đang Có: '. $soluong .'</div>';
 
         // Kiểm tra trạng thái hàng
         if ($trangthai == 'còn') {
@@ -82,59 +83,61 @@ if (isset($_GET['id'])) {
   });
 
   // Kiểm tra xem giỏ hàng đã có sản phẩm hay chưa
-function checkCart(productId) {
-  if (localStorage.getItem("cart")) {
-    let cart = JSON.parse(localStorage.getItem("cart"));
+  function checkCart(productId) {
+    if (localStorage.getItem("cart")) {
+      let cart = JSON.parse(localStorage.getItem("cart"));
 
-    if (cart.hasOwnProperty(productId)) {
-      return cart[productId];
+      if (cart.hasOwnProperty(productId)) {
+        return cart[productId];
+      }
     }
+
+    return 0;
   }
-
-  return 0;
-}
-// Cập nhật số lượng sản phẩm trong giỏ hàng
-function updateCart(productId, quantity) {
-  let cart = {};
-
-  if (localStorage.getItem("cart")) {
-    cart = JSON.parse(localStorage.getItem("cart"));
-  }
-
-  cart[productId] = quantity;
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-// Kiểm tra và cập nhật số lượng sản phẩm trong giỏ hàng khi nhấn nút "Thêm vào giỏ hàng"
-addToCartButton.addEventListener("click", function () {
-  let quantity = parseInt(quantityInput.value);
-  if (quantity >= 1) {
-    let productId = '<?php echo $selectedProductId; ?>';
-
-  // Kiểm tra xem sản phẩm đã có trong giỏ hàng hay chưa
-  let existingQuantity = checkCart(productId);
-
-  // Cộng số lượng mới với số lượng hiện có trong giỏ hàng
-  let updatedQuantity = existingQuantity + quantity;
 
   // Cập nhật số lượng sản phẩm trong giỏ hàng
-  updateCart(productId, updatedQuantity);
+  function updateCart(productId, quantity) {
+    let cart = {};
 
-    // Gửi yêu cầu AJAX để thêm sản phẩm vào giỏ hàng
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "add_to_cart.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-        // Xử lý phản hồi từ server (nếu cần)
-        alert(xhr.responseText);
-      }
-    };
-    xhr.send("productId=" + productId + "&quantity=" + quantity);
-  } else {
-    // Hiển thị thông báo không hợp lệ nếu số lượng sản phẩm không hợp lệ
-    alert("Số lượng sản phẩm không hợp lệ.");
+    if (localStorage.getItem("cart")) {
+      cart = JSON.parse(localStorage.getItem("cart"));
+    }
+
+    cart[productId] = quantity;
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
-});
-  
+
+  // Kiểm tra và cập nhật số lượng sản phẩm trong giỏ hàng khi nhấn nút "Thêm vào giỏ hàng"
+  addToCartButton.addEventListener("click", function () {
+    let quantity = parseInt(quantityInput.value);
+    let availableQuantity = parseInt(<?php echo $soluong; ?>);
+
+    if (quantity >= 1 && quantity <= availableQuantity) {
+      let productId = '<?php echo $selectedProductId; ?>';
+
+      // Kiểm tra xem sản phẩm đã có trong giỏ hàng hay chưa
+      let existingQuantity = checkCart(productId);
+
+      // Cộng số lượng mới với số lượng hiện có trong giỏ hàng
+      let updatedQuantity = existingQuantity + quantity;
+
+      // Cập nhật số lượng sản phẩm trong giỏ hàng
+      updateCart(productId, updatedQuantity);
+
+      // Gửi yêu cầu AJAX để thêm sản phẩm vào giỏ hàng
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "add_to_cart.php", true);
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+          // Xử lý phản hồi từ server (nếu cần)
+          alert(xhr.responseText);
+        }
+      };
+      xhr.send("productId=" + productId + "&quantity=" + quantity);
+    } else {
+      // Hiển thị thông báo không hợp lệ nếu số lượng sản phẩm không hợp lệ
+      alert("Số lượng sản phẩm không đủ.");
+    }
+  });
 </script>

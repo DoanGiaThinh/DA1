@@ -9,15 +9,15 @@
     echo "<table class='my-table'>";
     echo "<tr> 
                 <th class='my-header stt'>STT</th>
-                <th class='my-header'>Mã Đơn Hàng</th>
-                <th class='my-header'>Mã Khách Hàng</th>
+                <th class='my-header'>Mã ĐH</th>
+                <th class='my-header'>Mã KH</th>
                 <th class='my-header'>Địa Chỉ</th>
-                <th class='my-header'>Số Điện Thoại</th>
+                <th class='my-header'>SĐT</th>
                 <th class='my-header'>Tên Món</th>
-                <th class='my-header'>Số Lượng</th>
+                <th class='my-header' style='width: 80px;'>Số Lượng</th>
                 <th class='my-header'>Tổng Giá</th>
-                <th class='my-header'>Phương thức thanh toán</th>
-                <th class='my-header'>Ngày đặt hàng</th>
+                <th class='my-header' style='width: 96px;'>Thanh Toán</th>
+                <th class='my-header' style='width: 120px;'>Ngày Đặt Hàng</th>
             </tr>";
 
     if ($result->num_rows > 0) {
@@ -53,7 +53,7 @@
             AND dh.makhachhang = kh.makhachhang";
         }
         $result = mysqli_query($conn, $sql);
-        $i = 1;
+        $i =$startinglimit +1;
         while ($row = $result->fetch_assoc()) {
             if ($i > $startinglimit && $i <= ($startinglimit + $numPages)) {
             $madonhang = $row['madonhang'];
@@ -71,7 +71,7 @@
             echo "<td>$i</td>";
             echo "<td>$madonhang</td>";
             echo "<td>$tenkhachhang</td>";
-            echo "<td>$diachi</td>";
+            echo "<td style='text-align: left;'>$diachi</td>";
             echo "<td>$sodienthoai</td>";
             echo "<td>$tenmon</td>";
             echo "<td>$soluong</td>";

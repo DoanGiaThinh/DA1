@@ -25,7 +25,7 @@ if (isset($_SESSION['user'])) {
                 <img src="../img/logo.png">
             </div>
             <div class="hello"><?php echo "Xin chào ". $hello ?></div>
-            <a href="../logout.php"><div class="text-logout">Đăng Xuất</div></a>
+            
             <ul class="vertical-menu">
                 <a href="index.php?page=product">
                     <li>Món</li>
@@ -44,6 +44,8 @@ if (isset($_SESSION['user'])) {
                 </a>
                 <a href="index.php?page=account"></a>
             </ul>
+
+            <a href="../logout.php" class="text-logout"><div >Đăng Xuất</div></a>
         </div>
         <?php
         if (isset($_GET["page"])) {
@@ -55,7 +57,7 @@ if (isset($_SESSION['user'])) {
     </div>
 <?php
 } else {
-    header('location: login.php');
+    header('location: ../login.php');
 }
 ?>
 
